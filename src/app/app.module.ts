@@ -7,6 +7,8 @@ import { SharedModule } from "./shared/shared.module";
 import { ROUTES } from "./app.routing";
 import { AhorcadoGameComponent } from "./ahorcado-game/ahorcado-game.component";
 import { SopaLetrasGameComponent } from "./sopa-letras-game/sopa-letras-game.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SopaLetrasGameComponent } from "./sopa-letras-game/sopa-letras-game.com
     BrowserModule, 
     BrowserAnimationsModule,
     SharedModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
