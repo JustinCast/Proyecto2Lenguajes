@@ -1,6 +1,6 @@
 <div class="container">
   <mat-list role="list">
-    <mat-list-item *ngFor="let w of words" role="listitem">
+  <mat-list-item *ngFor="let w of activePageDataChunk" role="listitem">
       <div>
         {{w}}
       </div>
@@ -11,4 +11,8 @@
       </div>
     </mat-list-item>
   </mat-list>
+  <hr>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
+  </mat-paginator>
+    
 </div>
