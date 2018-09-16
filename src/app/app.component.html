@@ -1,0 +1,21 @@
+<nav class="shadow navbar mb-5">
+    <a class="navbar-brand" href="/">P2Lenguajes</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a [routerLink]="['/ahorcado']" class="nav-item nav-link" routerLinkActive="active-link" href="#">Ahorcado</a>
+        <a [routerLink]="['/sopa-letras']" class="nav-item nav-link" routerLinkActive="active-link" href="#">Sopa de Letras</a>
+      </div>
+    </div>
+    <div class="navbar-expand ml-auto navbar-nav">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/" target="_blank">
+          <i class="fa fa-instagram"></i>
+        </a>
+        <a class="nav-item nav-link" href="/" target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  
