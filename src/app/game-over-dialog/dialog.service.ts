@@ -14,7 +14,7 @@ export class DialogService {
     let dialogRef: MatDialogRef<GameOverDialogComponent>;
     dialogRef = this.dialog.open(GameOverDialogComponent, {
       width: "30%",
-      height: "25%",
+      height: "35%",
       data: word
     });
 

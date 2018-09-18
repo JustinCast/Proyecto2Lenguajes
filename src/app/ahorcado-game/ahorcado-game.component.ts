@@ -66,14 +66,15 @@ export class AhorcadoGameComponent implements OnInit {
           );
     }
 
-    if(this.lifes === 0)
-      this.openDialog();
+    if (this.lifes === 0) this.openDialog();
 
     this.hangedFG.reset();
   }
 
   openDialog() {
-    this.dialogS.open(this.selectedWord);
+    this.dialogS.open(this.selectedWord).subscribe(result => {
+      this.reset();
+    });
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -105,5 +106,11 @@ export class AhorcadoGameComponent implements OnInit {
     let firstCut = e.pageIndex * e.pageSize;
     let secondCut = firstCut + e.pageSize;
     this.activePageDataChunk = this.words.slice(firstCut, secondCut);
+  }
+
+  reset() {
+    this.hiddenWord = undefined;
+    this.selectedWord = undefined;
+    this.lifes = 6;
   }
 }
