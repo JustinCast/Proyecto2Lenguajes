@@ -22,8 +22,12 @@ export class AhorcadoGameComponent implements OnInit {
 
   constructor(private _fb: FormBuilder) {
     this.hangedFG = this._fb.group({
-      'word': ['']
+      word: [""]
     });
+  }
+
+  replaceAt(string, index, replace) {
+    return string.substring(0, index) + replace + string.substring(index + 1);
   }
 
   ngOnInit() {
@@ -31,7 +35,10 @@ export class AhorcadoGameComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.hangedFG.controls['word'].value);
+    let word = this.hangedFG.controls["word"].value;
+    for (let index = 0; index < this.selectedWord.length; index++)
+      if(this.selectedWord[index] === word)
+        this.hiddenWord = this.replaceAt(this.hiddenWord, index, this.selectedWord[index]);
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -39,11 +46,12 @@ export class AhorcadoGameComponent implements OnInit {
   }
 
   genRandom() {
-    this.hiddenWord = '';
+    this.hiddenWord = "";
     let randomIndex = Math.floor(Math.random() * (this.words.length - 1)) + 1;
     this.selectedWord = this.words[randomIndex];
+    console.log(this.selectedWord);
     for (let c of this.words[randomIndex]) {
-      this.hiddenWord = this.hiddenWord + 'x';
+      this.hiddenWord = this.hiddenWord + "x";
     }
   }
 
