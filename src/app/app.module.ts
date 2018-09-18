@@ -8,13 +8,15 @@ import { ROUTES } from "./app.routing";
 import { AhorcadoGameComponent } from "./ahorcado-game/ahorcado-game.component";
 import { SopaLetrasGameComponent } from "./sopa-letras-game/sopa-letras-game.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AhorcadoGameComponent,
-    SopaLetrasGameComponent
+    SopaLetrasGameComponent,
+    GameOverDialogComponent
   ],
   imports: [
     BrowserModule, 
@@ -23,6 +25,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     RouterModule.forRoot(ROUTES),
     FormsModule,
     ReactiveFormsModule
+  ],
+  entryComponents: [
+    GameOverDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

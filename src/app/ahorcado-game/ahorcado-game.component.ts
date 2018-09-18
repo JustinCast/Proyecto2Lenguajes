@@ -13,6 +13,8 @@ export class AhorcadoGameComponent implements OnInit {
   selectedWord: string;
   hangedFG: FormGroup;
   lifes: number = 6;
+  wrongAudio = new Audio();
+  doneAudio = new Audio();
 
   length = this.words.length;
   pageSize = 4;
@@ -32,13 +34,15 @@ export class AhorcadoGameComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadWrongAudio();
+    this.loadDoneAudio();
     this.activePageDataChunk = this.words.slice(0, this.pageSize);
   }
 
   onSubmit() {
     let word = this.hangedFG.controls["word"].value;
     if (!this.selectedWord.includes(word)) {
-      this.playWrongAudio();
+      this.wrongAudio.play();
       document.getElementById("lifes-header").classList.add("animated");
       document.getElementById("lifes-header").classList.add("shake");
       setTimeout(function() {
@@ -47,7 +51,7 @@ export class AhorcadoGameComponent implements OnInit {
       }, 1000);
       this.lifes--;
     } else{
-      this.playDoneAudio();
+      this.doneAudio.play();
       for (let index = 0; index < this.selectedWord.length; index++)
         if (this.selectedWord[index] === word)
           this.hiddenWord = this.replaceAt(
@@ -56,24 +60,23 @@ export class AhorcadoGameComponent implements OnInit {
             this.selectedWord[index]
           );
     }
+
+    this.hangedFG.reset();
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
   }
 
-  playWrongAudio() {
-    let audio = new Audio();
-    audio.src = "../../assets/err.mp3";
-    audio.load();
-    audio.play();
+  loadWrongAudio() {
+    this.wrongAudio.src = "../../assets/err.mp3";
+    this.wrongAudio.load();
   }
 
-  playDoneAudio() {
-    let audio = new Audio();
-    audio.src = "../../assets/done.wav";
-    audio.load();
-    audio.play();
+  loadDoneAudio() {
+    this.doneAudio = new Audio();
+    this.doneAudio.src = "../../assets/done.wav";
+    this.doneAudio.load();
   }
 
   genRandom() {
