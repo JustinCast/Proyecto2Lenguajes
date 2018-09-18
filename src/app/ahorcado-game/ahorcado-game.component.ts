@@ -30,6 +30,10 @@ export class AhorcadoGameComponent implements OnInit {
     this.activePageDataChunk = this.words.slice(0, this.pageSize);
   }
 
+  onSubmit() {
+    console.log(this.hangedFG.controls['word'].value);
+  }
+
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
   }
