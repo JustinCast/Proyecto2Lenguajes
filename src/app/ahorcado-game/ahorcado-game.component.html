@@ -1,5 +1,5 @@
-<mat-horizontal-stepper>
-  <mat-step>
+<mat-horizontal-stepper [linear]="true">
+  <mat-step [stepControl]="selectedWord !== undefined">
     <ng-template matStepLabel>Selección de palabra</ng-template>
     <div class="container">
       <mat-list role="list">
@@ -25,7 +25,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Jugar</ng-template>
-    <form class="container text-center" [formGroup]="hangedFG" (ngSubmit)="onSubmit()">
+    <form *ngIf="selectedWord; else selectWordFirst" class="container text-center" [formGroup]="hangedFG" (ngSubmit)="onSubmit()">
       <div class="text-right container">
         <h2 id="lifes-header"><span class="text-danger">Vidas: </span>{{lifes}}</h2>
       </div>
@@ -38,5 +38,13 @@
         <button type="submit" mat-raised-button color="primary"><mat-icon>done</mat-icon></button>
       </div>
     </form>
+    <ng-template #selectWordFirst>
+      <div style="margin-top: 15%" class="container">        
+        <div class="container text-center">
+          <mat-icon class="text-danger" style="font-size: 50px">priority_high</mat-icon>
+        </div>
+        <h1 class="text-danger text-center">Seleccione una palabra primero</h1>
+      </div>
+    </ng-template>
   </mat-step>
 </mat-horizontal-stepper>

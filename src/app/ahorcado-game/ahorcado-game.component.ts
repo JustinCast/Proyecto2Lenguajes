@@ -73,7 +73,7 @@ export class AhorcadoGameComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialogS.open();
+    this.dialogS.open(this.selectedWord);
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
