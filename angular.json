@@ -30,7 +30,10 @@
               "./node_modules/animate.css/animate.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/assets/wordfind.js",
+              "./src/assets/wordfindgame.js"
+            ]
           },
           "configurations": {
             "production": {
