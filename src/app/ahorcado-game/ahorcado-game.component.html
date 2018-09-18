@@ -1,17 +1,25 @@
-<div class="container">
-  <mat-list role="list">
-  <mat-list-item *ngFor="let w of activePageDataChunk" role="listitem">
-      <div>
-        {{w}}
-      </div>
-      <div class="actions-container">
-        <button mat-icon-button color="warn">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </mat-list-item>
-  </mat-list>
-  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
-  </mat-paginator>
-    
-</div>
+<mat-horizontal-stepper>
+  <mat-step>
+    <ng-template matStepLabel>Selección de palabra</ng-template>
+    <div class="container">
+      <mat-list role="list">
+      <mat-list-item *ngFor="let w of activePageDataChunk" role="listitem">
+        <div>
+          {{w}}
+        </div>
+        <div class="actions-container">
+          <button mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        </mat-list-item>
+      </mat-list>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
+      </mat-paginator>
+    </div>
+    <div class="text-center container">
+      <button mat-button (click)="genRandom()"><mat-icon>shuffle</mat-icon></button>
+    </div>
+    <h2 class="text-center text-secondary" *ngIf="selectedWord">{{selectedWord}}</h2>
+  </mat-step>
+</mat-horizontal-stepper>
