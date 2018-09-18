@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import * as data from "./ahorcadoGameWords.json";
-import { PageEvent } from "@angular/material";
+import { PageEvent, MatDialog } from "@angular/material";
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { DialogService } from "../game-over-dialog/dialog.service";
 @Component({
   selector: "app-ahorcado-game",
   templateUrl: "./ahorcado-game.component.html",
@@ -23,7 +24,11 @@ export class AhorcadoGameComponent implements OnInit {
   pageEvent: PageEvent;
   activePageDataChunk = [];
 
-  constructor(private _fb: FormBuilder) {
+  constructor(
+    private _fb: FormBuilder,
+    public dialog: MatDialog,
+    private dialogS: DialogService
+  ) {
     this.hangedFG = this._fb.group({
       word: [""]
     });
@@ -50,7 +55,7 @@ export class AhorcadoGameComponent implements OnInit {
         document.getElementById("lifes-header").classList.remove("shake");
       }, 1000);
       this.lifes--;
-    } else{
+    } else {
       this.doneAudio.play();
       for (let index = 0; index < this.selectedWord.length; index++)
         if (this.selectedWord[index] === word)
@@ -61,7 +66,14 @@ export class AhorcadoGameComponent implements OnInit {
           );
     }
 
+    if(this.lifes === 0)
+      this.openDialog();
+
     this.hangedFG.reset();
+  }
+
+  openDialog() {
+    this.dialogS.open();
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-game-over-dialog',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameOverDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<GameOverDialogComponent>) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
   }

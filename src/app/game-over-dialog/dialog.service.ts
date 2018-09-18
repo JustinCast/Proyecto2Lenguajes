@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { GameOverDialogComponent } from './game-over-dialog.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DialogService {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) {}
+
+  public open(): Observable<boolean> {
+    let dialogRef: MatDialogRef<GameOverDialogComponent>;
+    dialogRef = this.dialog.open(GameOverDialogComponent, {
+      width: "30%",
+      height: "35%"
+    });
+
+    return dialogRef.afterClosed();
+  }
 }
