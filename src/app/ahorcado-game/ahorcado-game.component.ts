@@ -12,6 +12,7 @@ export class AhorcadoGameComponent implements OnInit {
   hiddenWord: string;
   selectedWord: string;
   hangedFG: FormGroup;
+  lifes: number = 6;
 
   length = this.words.length;
   pageSize = 4;
@@ -36,9 +37,21 @@ export class AhorcadoGameComponent implements OnInit {
 
   onSubmit() {
     let word = this.hangedFG.controls["word"].value;
-    for (let index = 0; index < this.selectedWord.length; index++)
-      if(this.selectedWord[index] === word)
-        this.hiddenWord = this.replaceAt(this.hiddenWord, index, this.selectedWord[index]);
+    if(!this.selectedWord.includes(word)){
+      document.getElementById('lifes-header').classList.add('animated');
+      document.getElementById('lifes-header').classList.add('shake');
+      setTimeout(function()
+      { 
+        document.getElementById('lifes-header').classList.remove("animated");
+        document.getElementById('lifes-header').classList.remove("shake");
+      },1000)
+      this.lifes--;
+    }
+    
+    else
+      for (let index = 0; index < this.selectedWord.length; index++)
+        if(this.selectedWord[index] === word)
+          this.hiddenWord = this.replaceAt(this.hiddenWord, index, this.selectedWord[index]);
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
