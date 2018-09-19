@@ -8,35 +8,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  <script id="wordfind" src="./assets/wordfind.js" type="text/javascript"></script>
+  <script id="wordfindgame" src="./assets/wordfindgame.js" type="text/javascript"></script>
 </head>
 <body>
-  <app-root></app-root>
+  <app-ahorcado-game></app-ahorcado-game>
+  <hr>
 
-  <!-- Add required markup -->
-  <div id="puzzle-container"></div>
+  <h1 class="text-center text-primary">Sopa de Letras</h1>
+  <div class="card shadow p-3 mb-5 bg-white rounded" id="puzzle-container"></div>
   <div id="puzzle-words"></div>
-  <input type="button" id="solveBTN" value="Solve puzzle"/>
+  <div class="container text-center">
+    <input class="btn btn-primary" type="button" id="solveBTN" value="Solve puzzle"/>
+  </div>
 
-  <!-- Add dependencies -->
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-  <script src="./assets/wordfind.js" type="text/javascript"></script>
-  <script src="./assets/wordfindgame.js" type="text/javascript"></script>
-  <!-- Add our logic -->
   <script>
-      // An array with the words to show
-      var words = ['cows', 'tracks', 'arrived', 'located', 'sir', 'seat',
-         'division', 'effect', 'underline', 'view', 'annual'
-     ];
+        // An array with the words to show
+        var words = ['computadora', 'vaca', 'tecnológico', 'perro', 'casa', 'correr',
+           'mamá', 'facebook', 'casarse', 'matarse', 'lamborghini',
+           'aniversario', 'mujer', 'milenio', 'lenguajes',
+           'artesano', 'aprender', 'meteorólogo', 'javascript', 'typescript',
+           'eficacia','velocidad','contar','consonante','alguien',
+           'navegar','montaña','maravilla','alaska','sonreir','angular', 'ausente',
+           'cayó', 'examinar', 'frequente', 'impaciente', 'célula',
+           'citoplasma', 'concurso', 'difusión', 'adivinar',
+           'hombre'
+       ];
 
-      // Start a basic word game without customization !
-      var gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
+        // Start a basic word game without customization !
+        var gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
 
-      $("#solveBTN").click(function(){
-          // Solve the puzzle !
-          var result = wordfindgame.solve(gamePuzzle, words);
-          console.log(result);
-      });
-  </script>
+        $("#solveBTN").click(function(){
+            // Solve the puzzle !
+            var result = wordfindgame.solve(gamePuzzle, words);
+            console.log(result);
+        });
+    </script>
 </body>
 </html>

@@ -30,6 +30,6 @@ import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.com
     GameOverDialogComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AhorcadoGameComponent]
 })
 export class AppModule {}

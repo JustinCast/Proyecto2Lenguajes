@@ -32,7 +32,8 @@
             ],
             "scripts": [
               "./src/assets/wordfind.js",
-              "./src/assets/wordfindgame.js"
+              "./src/assets/wordfindgame.js",
+              "./node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {

@@ -1,3 +1,4 @@
+<h1 style="margin-top: 2%" class="text-center text-primary">Ahorcado</h1>
 <mat-horizontal-stepper [linear]="true">
   <mat-step [stepControl]="selectedWord !== undefined">
     <ng-template matStepLabel>Selección de palabra</ng-template>
@@ -14,7 +15,7 @@
     </div>
     <hr>
     <div class="text-center container">
-      <button mat-button (click)="genRandom()"><mat-icon>shuffle</mat-icon></button>
+      <button mat-raised-button color="primary" (click)="genRandom()"><mat-icon>shuffle</mat-icon></button>
     </div>
     <h2 class="text-center text-secondary" *ngIf="hiddenWord"><span class="text-primary">Palabra a adivinar</span><br>{{hiddenWord}}</h2>
   </mat-step>
