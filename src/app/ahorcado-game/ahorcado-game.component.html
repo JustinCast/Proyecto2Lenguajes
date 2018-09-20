@@ -29,18 +29,15 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Jugar</ng-template>
-    <form *ngIf="selectedWord; else selectWordFirst" class="container text-center" [formGroup]="hangedFG" (ngSubmit)="onSubmit()">
+    <form *ngIf="selectedWord; else selectWordFirst" class="container text-center" [formGroup]="hangedFG">
       <div class="text-right container">
         <h2 id="lifes-header"><span class="text-danger">Vidas: </span>{{lifes}}</h2>
       </div>
       <h2 class="text-center text-secondary" *ngIf="hiddenWord"><span class="text-primary">Palabra a adivinar</span><br>{{hiddenWord}}</h2>
       <br>
       <mat-form-field>
-        <input pattern="/^[a-zA-Z\s]*$/" matInput maxlength="1" [formControl]="hangedFG.get('word')" placeholder="Inserte una letra" type="text">
+        <input pattern="/^[a-zA-Z\s]*$/" (keyup.enter)="onSubmit()" matInput maxlength="1" [formControl]="hangedFG.get('word')" placeholder="Inserte una letra y presione ENTER" type="text">
       </mat-form-field>
-      <div class="container text-center">
-        <button type="submit" mat-raised-button color="primary"><mat-icon>done</mat-icon></button>
-      </div>
     </form>
     <ng-template #selectWordFirst>
       <div style="margin-top: 15%" class="container">        

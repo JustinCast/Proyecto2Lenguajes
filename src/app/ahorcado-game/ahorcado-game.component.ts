@@ -46,12 +46,7 @@ export class AhorcadoGameComponent implements OnInit {
     let word = this.hangedFG.controls["word"].value;
     if (!this.selectedWord.includes(word)) {
       this.wrongAudio.play();
-      document.getElementById("lifes-header").classList.add("animated");
-      document.getElementById("lifes-header").classList.add("shake");
-      setTimeout(function() {
-        document.getElementById("lifes-header").classList.remove("animated");
-        document.getElementById("lifes-header").classList.remove("shake");
-      }, 1000);
+      this.removeCssClasses();
       this.lifes--;
     } else {
       this.doneAudio.play();
@@ -68,6 +63,15 @@ export class AhorcadoGameComponent implements OnInit {
     if (this.hiddenWord === this.selectedWord) this.openGameWonDialog();
 
     this.hangedFG.reset();
+  }
+
+  removeCssClasses() {
+    document.getElementById("lifes-header").classList.add("animated");
+    document.getElementById("lifes-header").classList.add("shake");
+    setTimeout(function() {
+      document.getElementById("lifes-header").classList.remove("animated");
+      document.getElementById("lifes-header").classList.remove("shake");
+    }, 1000);
   }
 
   openGameOverDialog() {
