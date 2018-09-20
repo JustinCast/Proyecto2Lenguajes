@@ -1,4 +1,7 @@
 <h1 style="margin-top: 2%" class="text-center text-primary">Ahorcado</h1>
+<div id="header-info-container" class="container text-right">
+  <button (click)="openInfoDialog()" style="background: rgba(255, 255, 255, 0.5)" mat-raised-button>Info Programación Funcional</button>
+</div>
 <mat-horizontal-stepper [linear]="true">
   <mat-step [stepControl]="selectedWord !== undefined">
     <ng-template matStepLabel>Selección de palabra</ng-template>

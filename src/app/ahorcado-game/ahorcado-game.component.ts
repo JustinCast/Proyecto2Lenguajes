@@ -100,6 +100,10 @@ export class AhorcadoGameComponent implements OnInit {
       });
   }
 
+  openInfoDialog() {
+    this.dialogS.openInfoDialog();
+  }
+
   loadWrongAudio() {
     this.wrongAudio.src = "../../assets/err.mp3";
     this.wrongAudio.load();

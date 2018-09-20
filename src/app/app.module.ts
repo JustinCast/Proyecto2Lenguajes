@@ -5,20 +5,20 @@ import { AppComponent } from "./app.component";
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "./shared/shared.module";
 import { ROUTES } from "./app.routing";
-import { AhorcadoGameComponent } from "./ahorcado-game/ahorcado-game.component";
-import { SopaLetrasGameComponent } from "./sopa-letras-game/sopa-letras-game.component";
+import { AhorcadoGameComponent } from "./ahorcado-game/ahorcado-game.component";;
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.component';
 import { SearchWordPipe } from './search-word.pipe';
+import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AhorcadoGameComponent,
-    SopaLetrasGameComponent,
     GameOverDialogComponent,
-    SearchWordPipe
+    SearchWordPipe,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule, 
@@ -29,7 +29,8 @@ import { SearchWordPipe } from './search-word.pipe';
     ReactiveFormsModule
   ],
   entryComponents: [
-    GameOverDialogComponent
+    GameOverDialogComponent,
+    InfoDialogComponent
   ],
   providers: [],
   bootstrap: [AhorcadoGameComponent]
