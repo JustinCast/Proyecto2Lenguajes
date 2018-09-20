@@ -24,7 +24,17 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "index.js",
+                "input": "./server/",
+                "output": "./"
+              },
+              {
+                "glob": "package.json",
+                "input": "./server/",
+                "output": "./"
+              }
             ],
             "styles": [
               "./node_modules/animate.css/animate.css",
