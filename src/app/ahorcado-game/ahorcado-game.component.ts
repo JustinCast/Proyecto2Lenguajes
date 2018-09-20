@@ -11,6 +11,9 @@ import { DialogData } from "../DialogData";
 })
 export class AhorcadoGameComponent implements OnInit {
   filterargs: string = "";
+  notify: boolean = false;
+  loadcounter: boolean = false;
+  left = 30;
   p: number = 1;
   words: Array<string> = (<any>data).words;
   hiddenWord: string;
@@ -88,6 +91,21 @@ export class AhorcadoGameComponent implements OnInit {
       .subscribe(() => {
         this.reset();
       });
+      this.resetTimer();
+  }
+
+  resetTimer() {
+    this.notify = false;
+    this.loadcounter = false;
+    this.left = 30;
+  }
+
+  onNotify(event: any) {
+    this.notify = true;
+  }
+  
+  onFinished() {
+    this.openGameOverDialog();
   }
 
   openGameWonDialog() {
@@ -103,6 +121,7 @@ export class AhorcadoGameComponent implements OnInit {
       .subscribe(() => {
         this.reset();
       });
+    this.resetTimer();
   }
 
   openInfoDialog() {
@@ -129,6 +148,7 @@ export class AhorcadoGameComponent implements OnInit {
       .map(x => (x = "x"))
       .toString()
       .replace(new RegExp(",", "gi"), "");
+    this.loadcounter = true;
   }
 
   reset() {

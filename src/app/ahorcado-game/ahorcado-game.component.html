@@ -32,6 +32,8 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Jugar</ng-template>
+    <countdown *ngIf="loadcounter" (notify)="onNotify($event)" (finished)="onFinished()" [config]="{leftTime: [left], notify: [ 5 ]}">$!m!:$!s!</countdown>
+    <h2 *ngIf="notify === true" class="animated flash infinite text-danger">Apuráte</h2>
     <form *ngIf="selectedWord; else selectWordFirst" class="container text-center" [formGroup]="hangedFG">
       <div class="text-right container">
         <h2 id="lifes-header"><span class="text-danger">Vidas: </span>{{lifes}}</h2>

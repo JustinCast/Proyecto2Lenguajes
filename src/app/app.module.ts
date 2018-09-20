@@ -9,6 +9,7 @@ import { AhorcadoGameComponent } from "./ahorcado-game/ahorcado-game.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.component';
 import { SearchWordPipe } from './search-word.pipe';
+import { CountdownModule } from 'ngx-countdown';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 
 
@@ -26,7 +27,8 @@ import { InfoDialogComponent } from './info-dialog/info-dialog.component';
     SharedModule,
     RouterModule.forRoot(ROUTES),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CountdownModule
   ],
   entryComponents: [
     GameOverDialogComponent,
