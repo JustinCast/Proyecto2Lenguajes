@@ -9,7 +9,7 @@ import { DialogService } from "../game-over-dialog/dialog.service";
   styleUrls: ["./ahorcado-game.component.scss"]
 })
 export class AhorcadoGameComponent implements OnInit {
-  filterargs: string = '';
+  filterargs: string = "";
   p: number = 1;
   words: Array<string> = (<any>data).words;
   hiddenWord: string;
@@ -64,15 +64,36 @@ export class AhorcadoGameComponent implements OnInit {
           );
     }
 
-    if (this.lifes === 0) this.openDialog();
+    if (this.lifes === 0) this.openGameOverDialog();
+    if(this.hiddenWord === this.selectedWord) this.openGameWonDialog();
 
     this.hangedFG.reset();
   }
 
-  openDialog() {
-    this.dialogS.open(this.selectedWord).subscribe(result => {
-      this.reset();
-    });
+  openGameOverDialog() {
+    this.dialogS
+      .open(
+        this.selectedWord,
+        "Has perdido",
+        true,
+        "sentiment_very_dissatisfied"
+      )
+      .subscribe(() => {
+        this.reset();
+      });
+  }
+
+  openGameWonDialog() {
+    this.dialogS
+      .open(
+        this.selectedWord,
+        "Has ganado!",
+        false,
+        "sentiment_very_satisfied"
+      )
+      .subscribe(() => {
+        this.reset();
+      });
   }
 
   loadWrongAudio() {

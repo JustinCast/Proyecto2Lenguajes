@@ -1,7 +1,7 @@
 <div class="container text-center">
-  <h1 class="text-center text-primary">Has perdido</h1>
-  <mat-icon style="font-size: 50px">sentiment_very_dissatisfied</mat-icon>
-  <h3 class="text-secondary">La palabra correcta era: <span class="text-danger"><strong>{{word}}</strong></span></h3>
+  <h1 class="text-center text-primary">{{data.message}}</h1>
+  <mat-icon style="font-size: 50px">{{data.icon}}</mat-icon>
+  <h3 *ngIf="data.display" class="text-secondary">La palabra correcta era: <span class="text-danger"><strong>{{data.word}}</strong></span></h3>
   <hr>
   <button color="primary" mat-raised-button (click)="dialogRef.close(true)"><mat-icon>replay</mat-icon></button>
 </div>

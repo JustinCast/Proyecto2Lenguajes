@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 export class GameOverDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<GameOverDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public word: string
+    @Inject(MAT_DIALOG_DATA) public data: string
   ) {}
 
   onNoClick(): void {

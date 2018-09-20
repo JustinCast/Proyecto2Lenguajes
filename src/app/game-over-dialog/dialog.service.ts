@@ -10,12 +10,17 @@ export class DialogService {
 
   constructor(private dialog: MatDialog) {}
 
-  public open(word: string): Observable<boolean> {
+  public open(word: string, message: string, display: boolean, icon: string): Observable<boolean> {
     let dialogRef: MatDialogRef<GameOverDialogComponent>;
     dialogRef = this.dialog.open(GameOverDialogComponent, {
       width: "30%",
       height: "35%",
-      data: word
+      data: {
+        word: word,
+        message: message,
+        icon: icon,
+        displayWord: display
+      }
     });
 
     return dialogRef.afterClosed();

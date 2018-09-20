@@ -8,6 +8,10 @@
         <mat-form-field>
           <input [(ngModel)]="filterargs" matInput type="text" placeholder="Buscar una palabra">
         </mat-form-field>
+        <mat-form-field>
+          <input #insertWord matInput type="text" placeholder="Ingresar una palabra">
+        </mat-form-field>
+        <button (click)="words.unshift(insertWord.value)" [disabled]="!insertWord.value" mat-button><mat-icon>add</mat-icon></button>
       </div>
       <mat-list-item *ngFor="let w of words | paginate: { itemsPerPage: 30, currentPage: p } | searchWord:filterargs; let i = index" role="listitem">
         <div>
