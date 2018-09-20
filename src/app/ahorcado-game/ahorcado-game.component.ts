@@ -3,6 +3,7 @@ import * as data from "./ahorcadoGameWords.json";
 import { PageEvent, MatDialog } from "@angular/material";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DialogService } from "../game-over-dialog/dialog.service";
+import { DialogData } from "../DialogData";
 @Component({
   selector: "app-ahorcado-game",
   templateUrl: "./ahorcado-game.component.html",
@@ -43,7 +44,7 @@ export class AhorcadoGameComponent implements OnInit {
   }
 
   onSubmit() {
-    let word = this.hangedFG.controls["word"].value;
+    let word = String(this.hangedFG.controls["word"].value).toLowerCase();
     if (!this.selectedWord.includes(word)) {
       this.wrongAudio.play();
       this.removeCssClasses();
@@ -77,10 +78,12 @@ export class AhorcadoGameComponent implements OnInit {
   openGameOverDialog() {
     this.dialogS
       .open(
-        this.selectedWord,
-        "Has perdido",
-        true,
-        "sentiment_very_dissatisfied"
+        new DialogData(
+          this.selectedWord,
+          "Has perdido",
+          true,
+          "sentiment_very_dissatisfied"
+        )
       )
       .subscribe(() => {
         this.reset();
@@ -90,10 +93,12 @@ export class AhorcadoGameComponent implements OnInit {
   openGameWonDialog() {
     this.dialogS
       .open(
-        this.selectedWord,
-        "Has ganado!\nPrueba a volver a jugar o ingresa tus propias palabras!",
-        false,
-        "sentiment_very_satisfied"
+        new DialogData(
+          this.selectedWord,
+          "Has ganado!\nPrueba a volver a jugar o ingresa tus propias palabras!",
+          false,
+          "sentiment_very_satisfied"
+        )
       )
       .subscribe(() => {
         this.reset();
