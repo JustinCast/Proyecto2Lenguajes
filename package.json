@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./server/index.js",
+    "start": "node index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --target=production"
   },
   "private": true,
   "dependencies": {
@@ -26,10 +27,12 @@
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "hammerjs": "^2.0.8",
     "jquery": "^3.3.1",
     "ngx-pagination": "^3.2.0",
+    "path": "^0.12.7",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
