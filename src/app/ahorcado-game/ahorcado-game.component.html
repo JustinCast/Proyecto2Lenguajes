@@ -13,7 +13,7 @@
         </mat-form-field>
         <button (click)="words.unshift(insertWord.value)" [disabled]="!insertWord.value" mat-button><mat-icon>add</mat-icon></button>
       </div>
-      <mat-list-item *ngFor="let w of words | paginate: { itemsPerPage: 30, currentPage: p } | searchWord:filterargs; let i = index" role="listitem">
+      <mat-list-item *ngFor="let w of words | paginate: { itemsPerPage: 15, currentPage: p } | searchWord:filterargs; let i = index" role="listitem">
         <div>
           {{w}}
         </div>

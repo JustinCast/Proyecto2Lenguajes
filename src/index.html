@@ -13,14 +13,16 @@
   <script id="wordfindgame" src="./assets/wordfindgame.js" type="text/javascript"></script>
 </head>
 <body>
-  <app-ahorcado-game></app-ahorcado-game>
+  <app-ahorcado-game style="background: rgba(255, 255, 255, 0.1)"></app-ahorcado-game>
   <hr>
-
-  <h1 class="text-center text-primary">Sopa de Letras</h1>
-  <div class="card shadow p-3 mb-5 bg-white rounded" id="puzzle-container"></div>
-  <div id="puzzle-words"></div>
-  <div class="container text-center">
-    <input class="btn btn-primary shadow p-2 mb-5 rounded" type="button" id="solveBTN" value="Solve puzzle"/>
+  <div id="wordfind-container" class="container text-center">
+    <h1 class="text-center text-primary">Sopa de Letras</h1>
+    <div class="card shadow p-3 mb-5 rounded" id="puzzle-container"></div>
+    <div id="puzzle-words"></div>
+    <br>
+    <div class="container text-center">
+      <input class="btn btn-primary shadow p-2 mb-5 rounded" type="button" id="solveBTN" value="Solve puzzle"/>
+    </div>
   </div>
 
   <script>
