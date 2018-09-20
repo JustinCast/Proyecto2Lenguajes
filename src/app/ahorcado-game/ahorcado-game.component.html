@@ -36,7 +36,7 @@
       <h2 class="text-center text-secondary" *ngIf="hiddenWord"><span class="text-primary">Palabra a adivinar</span><br>{{hiddenWord}}</h2>
       <br>
       <mat-form-field>
-        <input pattern="/^[a-zA-Z\s]*$/" (keyup.enter)="onSubmit()" matInput maxlength="1" [formControl]="hangedFG.get('word')" placeholder="Inserte una letra y presione ENTER" type="text">
+        <input [pattern]="'^[a-zA-Z]'" (keyup.enter)="onSubmit()" matInput maxlength="1" [formControl]="hangedFG.get('word')" placeholder="Inserte una letra y presione ENTER" type="text">
       </mat-form-field>
     </form>
     <ng-template #selectWordFirst>

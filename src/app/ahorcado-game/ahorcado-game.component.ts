@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import * as data from "./ahorcadoGameWords.json";
 import { PageEvent, MatDialog } from "@angular/material";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DialogService } from "../game-over-dialog/dialog.service";
 @Component({
   selector: "app-ahorcado-game",
@@ -29,7 +29,11 @@ export class AhorcadoGameComponent implements OnInit {
     private dialogS: DialogService
   ) {
     this.hangedFG = this._fb.group({
-      word: [""]
+      'word': ["", [
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.pattern('^[a-zA-Z]')
+      ]]
     });
   }
 
