@@ -9,6 +9,8 @@ import { DialogService } from "../game-over-dialog/dialog.service";
   styleUrls: ["./ahorcado-game.component.scss"]
 })
 export class AhorcadoGameComponent implements OnInit {
+  filterargs: string = '';
+  p: number = 1;
   words: Array<string> = (<any>data).words;
   hiddenWord: string;
   selectedWord: string;
@@ -17,9 +19,6 @@ export class AhorcadoGameComponent implements OnInit {
   wrongAudio = new Audio();
   doneAudio = new Audio();
 
-  length = this.words.length;
-  pageSize = 4;
-  pageSizeOptions: number[] = [4, 5];
   // MatPaginator Output
   pageEvent: PageEvent;
   activePageDataChunk = [];
@@ -41,7 +40,6 @@ export class AhorcadoGameComponent implements OnInit {
   ngOnInit() {
     this.loadWrongAudio();
     this.loadDoneAudio();
-    this.activePageDataChunk = this.words.slice(0, this.pageSize);
   }
 
   onSubmit() {
@@ -77,10 +75,6 @@ export class AhorcadoGameComponent implements OnInit {
     });
   }
 
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
-  }
-
   loadWrongAudio() {
     this.wrongAudio.src = "../../assets/err.mp3";
     this.wrongAudio.load();
@@ -100,12 +94,6 @@ export class AhorcadoGameComponent implements OnInit {
     for (let c of this.words[randomIndex]) {
       this.hiddenWord = this.hiddenWord + "x";
     }
-  }
-
-  onPageChanged(e) {
-    let firstCut = e.pageIndex * e.pageSize;
-    let secondCut = firstCut + e.pageSize;
-    this.activePageDataChunk = this.words.slice(firstCut, secondCut);
   }
 
   reset() {

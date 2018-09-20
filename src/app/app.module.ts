@@ -9,6 +9,7 @@ import { AhorcadoGameComponent } from "./ahorcado-game/ahorcado-game.component";
 import { SopaLetrasGameComponent } from "./sopa-letras-game/sopa-letras-game.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.component';
+import { SearchWordPipe } from './search-word.pipe';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.com
     AppComponent,
     AhorcadoGameComponent,
     SopaLetrasGameComponent,
-    GameOverDialogComponent
+    GameOverDialogComponent,
+    SearchWordPipe
   ],
   imports: [
     BrowserModule, 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { 
   MatListModule,
   MatRadioModule,
@@ -20,7 +21,8 @@ import {
     MatButtonModule,
     MatPaginatorModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule
   ],
   exports: [
     MatListModule,
@@ -30,7 +32,8 @@ import {
     MatButtonModule,
     MatPaginatorModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule
   ],
   declarations: []
 })

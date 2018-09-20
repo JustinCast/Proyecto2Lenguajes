@@ -40,7 +40,7 @@
 }
 
 #puzzle-container .solved {
-    background-color: purple;
+    background-color: greenyellow;
     color: white;
 }
 /* indicates that all words have been found */
@@ -53,6 +53,8 @@
 */
 
 #puzzle-words {
+    border: 0.5px dashed lightgrey;
+    border-radius: 10px;
     padding-top: 20px;
     -moz-column-count: 2;
     -moz-column-gap: 20px;
