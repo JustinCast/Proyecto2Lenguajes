@@ -29,11 +29,7 @@ export class AhorcadoGameComponent implements OnInit {
     private dialogS: DialogService
   ) {
     this.hangedFG = this._fb.group({
-      'word': ["", [
-        Validators.required,
-        Validators.maxLength(50),
-        Validators.pattern('^[a-zA-Z]')
-      ]]
+      word: ["", [Validators.required, Validators.pattern("^[a-zA-Z]")]]
     });
   }
 
@@ -93,7 +89,12 @@ export class AhorcadoGameComponent implements OnInit {
 
   openGameWonDialog() {
     this.dialogS
-      .open(this.selectedWord, "Has ganado!", false, "sentiment_very_satisfied")
+      .open(
+        this.selectedWord,
+        "Has ganado!\nPrueba a volver a jugar o ingresa tus propias palabras!",
+        false,
+        "sentiment_very_satisfied"
+      )
       .subscribe(() => {
         this.reset();
       });

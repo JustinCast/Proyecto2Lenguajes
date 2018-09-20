@@ -19,7 +19,7 @@ export class DialogService {
         word: word,
         message: message,
         icon: icon,
-        displayWord: display
+        display: display
       }
     });
 
