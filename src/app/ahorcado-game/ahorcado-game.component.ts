@@ -65,7 +65,7 @@ export class AhorcadoGameComponent implements OnInit {
     }
 
     if (this.lifes === 0) this.openGameOverDialog();
-    if(this.hiddenWord === this.selectedWord) this.openGameWonDialog();
+    if (this.hiddenWord === this.selectedWord) this.openGameWonDialog();
 
     this.hangedFG.reset();
   }
@@ -85,12 +85,7 @@ export class AhorcadoGameComponent implements OnInit {
 
   openGameWonDialog() {
     this.dialogS
-      .open(
-        this.selectedWord,
-        "Has ganado!",
-        false,
-        "sentiment_very_satisfied"
-      )
+      .open(this.selectedWord, "Has ganado!", false, "sentiment_very_satisfied")
       .subscribe(() => {
         this.reset();
       });
@@ -112,9 +107,10 @@ export class AhorcadoGameComponent implements OnInit {
     let randomIndex = Math.floor(Math.random() * (this.words.length - 1)) + 1;
     this.selectedWord = this.words[randomIndex];
     console.log(this.selectedWord);
-    for (let c of this.words[randomIndex]) {
-      this.hiddenWord = this.hiddenWord + "x";
-    }
+    this.hiddenWord = Array.from(this.words[randomIndex])
+      .map(x => (x = "x"))
+      .toString()
+      .replace(new RegExp(",", "gi"), "");
   }
 
   reset() {
