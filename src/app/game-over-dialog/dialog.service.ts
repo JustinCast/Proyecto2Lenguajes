@@ -30,8 +30,8 @@ export class DialogService {
   public openInfoDialog() {
     let dialogRef: MatDialogRef<InfoDialogComponent>;
     dialogRef = this.dialog.open(InfoDialogComponent, {
-      width: "35%",
-      height: "38%"
+      width: "40%",
+      height: "42%"
     });
     return dialogRef.afterClosed();
   }
